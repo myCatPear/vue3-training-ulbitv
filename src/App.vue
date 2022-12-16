@@ -1,30 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <button @click="increaseLikeCount">Like</button>
+    <button v-on:click="increaseDislikeCount">Dislike</button>
+  </div>
+  <div>
+    Likes count <strong>{{ likes }}</strong>
+  </div>
+  <div>
+    Dislike count <strong>{{ dislike }}</strong>
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  data() {
+    return {
+      likes: 0,
+      dislike: 0,
+    };
+  },
+  methods: {
+    increaseLikeCount() {
+      this.likes += 1;
+    },
+    increaseDislikeCount() {
+      this.dislike += 1;
+    },
+  },
+};
+</script>
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>
